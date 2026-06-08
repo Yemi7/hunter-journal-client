@@ -25,4 +25,7 @@ body {
   font-family: "JetBrains";
 }
 
+.custom-btn.black{
+  background-color: black ;
+}
 

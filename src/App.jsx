@@ -7,7 +7,7 @@ import EditEnemey from './pages/EditEnemy'
 import LocationList from './pages/LocationList'
 import LocationDetails from './pages/LocationDetails'
 import { Route, Routes } from 'react-router-dom'
-
+import About from './pages/about'
 
 function App() {
 
@@ -17,6 +17,7 @@ function App() {
       <div>
         <Routes>
           <Route path={"/"} element={<Home />} />
+          <Route path={"/about"} element={<About />} />
           <Route path={"/journal"} element={<Journal />} />
           <Route path={"/enemy-details/:enemyId"} element={<EnemyDetails />} />
           <Route path={"/edit-enemy"} element={<EditEnemey />} />
