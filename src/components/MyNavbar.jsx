@@ -13,8 +13,8 @@ import '../index.css'
 function MyNavbar() {
     return (
 
-        <Navbar className="bg-body-tertiary">
-            <Container>
+        <Navbar className="bg-body-tertiary " fixed='top'>
+            <Container className=''>
                 <Nav>
                     <Nav.Link as={Link} to='/'>Home</Nav.Link>
                     <Nav.Link as={Link} to='/about'>About</Nav.Link>

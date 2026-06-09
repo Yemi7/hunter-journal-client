@@ -1,25 +1,24 @@
+
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
 
-function EditEnemey() {
+function CreateEnemy() {
+        
+
+
     const navigate = useNavigate()
     const handleSubmit = (e) =>{
         e.preventDefault();
         navigate('/journal');
-        
-    }
     
-    return (
-        <div className="edit-enemy-page">
-            <div className="current-enemy flex">
-                <div className="edit-enemy-picture flex">
-                    <img src="https://hollowknight.wiki.fextralife.com/file/Hollow-Knight/crawlid_enemy_hollow_knight_wiki_guide.png" alt="" />
-                </div>
-                <div className="edit-enemy-name flex">
-                    <h1>Placeholder Name</h1>
-                </div>
-            </div>
+    }
+
+    return(
+
+
+
+        <div className="create-enemy-page">
             <Form onSubmit={handleSubmit} className='edit-enemy-form'> {/* placeholders should be current values */}
                 <Form.Group >
                     <Form.Select >
@@ -60,4 +59,4 @@ function EditEnemey() {
     )
 }
 
-export default EditEnemey;
+export default CreateEnemy

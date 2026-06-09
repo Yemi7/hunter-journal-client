@@ -6,21 +6,25 @@ import EnemyDetails from './pages/EnemyDetails'
 import EditEnemey from './pages/EditEnemy'
 import LocationList from './pages/LocationList'
 import LocationDetails from './pages/LocationDetails'
+import CreateEnemy from './pages/CreateEnemy'
 import { Route, Routes } from 'react-router-dom'
 import About from './pages/about'
+
+
 
 function App() {
 
   return (
     <div>
       <MyNavbar />
-      <div>
+      <div className='dark mx-auto my-0'>
         <Routes>
           <Route path={"/"} element={<Home />} />
           <Route path={"/about"} element={<About />} />
           <Route path={"/journal"} element={<Journal />} />
           <Route path={"/enemy-details/:enemyId"} element={<EnemyDetails />} />
-          <Route path={"/edit-enemy"} element={<EditEnemey />} />
+          <Route path={"/edit-enemy/:enemyId"} element={<EditEnemey />} />
+          <Route path={"/create-enemy"} element={<CreateEnemy />} />
           <Route path={"location-list"} element={<LocationList />} />
           <Route path={"location-details/:locationId"} element={<LocationDetails />} />
         </Routes>
