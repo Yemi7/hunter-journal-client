@@ -1,9 +1,44 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { useNavigate } from 'react-router-dom';
 
 function Journal() {
     const navigate = useNavigate();
+
+    const [enemies, setEnemies] = useState([]);
+    const [seletedEnemy, setSelectedEnemy] = useState(null);
+    const [fetching, setFetching] = useState(true)
+
+    useEffect(()=>{
+        getEnemies();
+    },[])
+
+    const getEnemies = async() => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies`)
+            const enemiesRes = response.data
+            setEnemies(enemiesRes);
+            setFetching(false)
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(()=>{
+        if (!seletedEnemy) return;
+        getSingleEnemy();
+    },[seletedEnemy])
+
+    const getSingleEnemy = async () => {
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies/${seletedEnemy}`)
+        setSelectedEnemy(response.data)
+
+    }
+
+    if (!enemies || fetching) return <h1 className='mt-5 p-5'>Loading...</h1>
 
     return (
         <div className="journal">
@@ -16,27 +51,35 @@ function Journal() {
             </div>
             <div className='enemy-grid'>
                 <div className='enemy-list'>
-                    <div className='enemy-item'>
-                        <p>Placeholder</p>
-                    </div>
+                    {enemies.map((enemy)=>{
+                        return(
+                            <div 
+                            className='enemy-item' 
+                            key={enemy.id}
+                            onClick={()=> setSelectedEnemy(enemy.id)}
+                            > 
+                                <p>{enemy.name}</p>
+                            </div>
+                        )
+                    })}
                 </div>
                 <div className='enemy-picture'>
-                    picture
+                    {seletedEnemy ? <img src={seletedEnemy.images} /> : 'image'}
                 </div>
                 <div className='enemy-name'>
-                    name
+                    {seletedEnemy ? seletedEnemy.name : 'name'}
                 </div>
                 <div className='enemy-description'>
-                    description
+                    {seletedEnemy ? seletedEnemy.briefDescription : 'description'}
                 </div>
                 <div className='details-button'>
-                    <Button onClick={()=>{navigate(`/enemy-details/${0}`)}}>details</Button>
+                    <Button disabled={!seletedEnemy} onClick={()=>{navigate(`/enemy-details/${seletedEnemy.id}`)}}>details</Button>
                 </div>
                 <div className='create-enemy-button'>
                     <Button onClick={()=>{navigate(`/create-enemy`)}}>create enemy</Button>
                 </div>
                 <div className='delete-button'>
-                    <Button onClick={()=>{}} >delete</Button>
+                    <Button disabled={!seletedEnemy} onClick={()=>{}} >delete</Button>
                 </div>
 
             </div>
