@@ -8,9 +8,11 @@
 } */
 
 @font-face {
-  font-family: "JetBrains";
-  src: url("./resources/fonts/ttf/JetBrainsMonoNL-Regular.ttf") format("ttf"),
-    url("./resources/fonts/webfonts/JetBrainsMono-Regular.woff2") format("woff2");
+  font-family: 'JetBrains';
+  src:
+    url('./resources/fonts/ttf/JetBrainsMonoNL-Regular.ttf') format('ttf'),
+    url('./resources/fonts/webfonts/JetBrainsMono-Regular.woff2')
+      format('woff2');
 }
 
 body {
@@ -21,10 +23,8 @@ body {
   margin: 0 auto;
   text-align: center;
   box-sizing: border-box;
-  font-family: "JetBrains";
+  font-family: 'JetBrains';
 }
-
-
 
 .custom-btn.black {
   background-color: black;
@@ -34,12 +34,13 @@ body {
   background-color: rgb(12, 13, 20);
 }
 
-.button {}
+.button {
+}
 
 .dark {
   background-color: rgb(15, 16, 28);
   color: rgb(202, 202, 202);
-  background-image: url("./resources/images/hk-background.jpg");
+  background-image: url('./resources/images/hk-background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -102,12 +103,17 @@ body {
   max-height: 100%;
 }
 
-.enemy-picture {
+.enemy-picture-box {
   grid-area: 1 / 2 / 10 / 3;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border: 1px solid red;
+}
+
+.enemy-image {
+  width: 100%;
+  height: auto;
 }
 
 .enemy-name {
@@ -135,7 +141,7 @@ body {
 }
 
 .create-enemy-button {
-grid-area: 9 / 3 / 10 / 4;
+  grid-area: 9 / 3 / 10 / 4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,7 +149,7 @@ grid-area: 9 / 3 / 10 / 4;
 }
 
 .delete-button {
-  grid-area: 8 / 3 / 9 / 4;  
+  grid-area: 8 / 3 / 9 / 4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -151,7 +157,6 @@ grid-area: 9 / 3 / 10 / 4;
 }
 
 .enemy-item {
-
   padding: 30px 0;
   display: flex;
   flex-direction: column;
@@ -175,7 +180,6 @@ grid-area: 9 / 3 / 10 / 4;
 
 .dark .location-list {
   background-color: rgba(0, 0, 0, 0.8);
-
 }
 
 .location-item {
@@ -189,15 +193,14 @@ grid-area: 9 / 3 / 10 / 4;
   align-items: center;
 }
 
-.location-item:hover{
+.location-item:hover {
   background-color: rgb(36, 10, 96);
 }
 
-.location-list a{
+.location-list a {
   text-decoration: none;
   color: inherit;
 }
-
 
 /* enemy details page */
 
@@ -232,36 +235,31 @@ grid-area: 9 / 3 / 10 / 4;
 }
 
 .enemy-details-description {
-
   border: 1px solid red;
   grid-area: 1/1/4/2;
 }
 
 .enemy-more-details {
-
   border: 1px solid red;
   grid-area: 1/2/4/3;
 }
 
 .edit-enemy-button {
-
   border: 1px solid red;
   grid-area: 5/1/6/2;
 }
 
 .delete-enemy-button {
-
   border: 1px solid red;
   grid-area: 5/2/6/3;
 }
 
 .back-button {
-
   border: 1px solid red;
   grid-area: 6/1/7/3;
 }
 
-.flex{
+.flex {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -290,7 +288,7 @@ grid-area: 9 / 3 / 10 / 4;
   width: 50%;
   height: 200px;
 }
-.edit-enemy-picture img{
+.edit-enemy-picture img {
   height: auto;
 }
 
@@ -305,7 +303,7 @@ grid-area: 9 / 3 / 10 / 4;
 
 /* create enemy page */
 
-.create-enemy-page{
+.create-enemy-page {
   width: 1000px;
   margin: 0 auto;
   min-height: 100vh;
@@ -316,7 +314,7 @@ grid-area: 9 / 3 / 10 / 4;
   /* add media for smaller screens */
 }
 
-.dark .create-enemy-page{
+.dark .create-enemy-page {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -340,10 +338,9 @@ grid-area: 9 / 3 / 10 / 4;
   margin: 35px auto 50px;
 }
 
-
 .location-details-grid {
   display: grid;
-  grid-template: repeat(6,1fr) / repeat(2, 1fr);
+  grid-template: repeat(6, 1fr) / repeat(2, 1fr);
   height: 600px;
 }
 
@@ -353,7 +350,7 @@ grid-area: 9 / 3 / 10 / 4;
 .location-more-details {
   grid-area: 1/2/5/3;
 }
-.location-back-button{
+.location-back-button {
   grid-area: 6/1/7/3;
 }
 

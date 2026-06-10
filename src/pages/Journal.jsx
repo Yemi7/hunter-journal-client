@@ -11,26 +11,26 @@ function Journal() {
     const [seletedEnemy, setSelectedEnemy] = useState(null);
     const [fetching, setFetching] = useState(true)
 
-    useEffect(()=>{
+    useEffect(() => {
         getEnemies();
-    },[])
+    }, [])
 
-    const getEnemies = async() => {
+    const getEnemies = async () => {
         try {
             const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies`)
             const enemiesRes = response.data
             setEnemies(enemiesRes);
             setFetching(false)
-            
+
         } catch (error) {
             console.log(error);
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         if (!seletedEnemy) return;
         getSingleEnemy();
-    },[seletedEnemy])
+    }, [seletedEnemy])
 
     const getSingleEnemy = async () => {
         const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies/${seletedEnemy}`)
@@ -51,20 +51,20 @@ function Journal() {
             </div>
             <div className='enemy-grid'>
                 <div className='enemy-list'>
-                    {enemies.map((enemy)=>{
-                        return(
-                            <div 
-                            className='enemy-item' 
-                            key={enemy.id}
-                            onClick={()=> setSelectedEnemy(enemy.id)}
-                            > 
+                    {enemies.map((enemy) => {
+                        return (
+                            <div
+                                className='enemy-item'
+                                key={enemy.id}
+                                onClick={() => setSelectedEnemy(enemy.id)}
+                            >
                                 <p>{enemy.name}</p>
                             </div>
                         )
                     })}
                 </div>
-                <div className='enemy-picture'>
-                    {seletedEnemy ? <img src={seletedEnemy.images} /> : 'image'}
+                <div className='enemy-picture-box'>
+                    {seletedEnemy ? <img className='enemy-image' src={seletedEnemy.images} /> : 'image'}
                 </div>
                 <div className='enemy-name'>
                     {seletedEnemy ? seletedEnemy.name : 'name'}
@@ -73,13 +73,13 @@ function Journal() {
                     {seletedEnemy ? seletedEnemy.briefDescription : 'description'}
                 </div>
                 <div className='details-button'>
-                    <Button disabled={!seletedEnemy} onClick={()=>{navigate(`/enemy-details/${seletedEnemy.id}`)}}>details</Button>
+                    <Button disabled={!seletedEnemy} onClick={() => { navigate(`/enemy-details/${seletedEnemy.id}`) }}>details</Button>
                 </div>
                 <div className='create-enemy-button'>
-                    <Button onClick={()=>{navigate(`/create-enemy`)}}>create enemy</Button>
+                    <Button onClick={() => { navigate(`/create-enemy`) }}>create enemy</Button>
                 </div>
                 <div className='delete-button'>
-                    <Button disabled={!seletedEnemy} onClick={()=>{}} >delete</Button>
+                    <Button disabled={!seletedEnemy} onClick={() => { }} >delete</Button>
                 </div>
 
             </div>
