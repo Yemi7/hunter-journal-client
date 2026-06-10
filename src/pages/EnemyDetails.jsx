@@ -26,6 +26,17 @@ function EnemyDetails() {
         }
     }
 
+    const deleteEnemy = async () => {
+        try {
+            const response = await axios.delete(`${import.meta.env.VITE_SERVER_URL}/enemies/${enemyId}`)
+            navigate('/journal')
+            getEnemyDetails();
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     if (!enemy || fetching) return <h1 className="mt-5 p-5">Loading</h1>
 
     return (
@@ -46,7 +57,7 @@ function EnemyDetails() {
                     <Button onClick={() => { navigate(`/edit-enemy/${enemyId}`) }}>Edit</Button>
                 </div>
                 <div className="delete-enemy-button flex">
-                    <Button>Delete</Button>
+                    <Button onClick={() => { deleteEnemy() }}>Delete</Button>
                 </div>
                 <div className="back-button flex">
                     <Button onClick={() => { navigate('/journal') }}>Back</Button>
