@@ -8,7 +8,7 @@ import LocationList from './pages/LocationList'
 import LocationDetails from './pages/LocationDetails'
 import CreateEnemy from './pages/CreateEnemy'
 import { Route, Routes } from 'react-router-dom'
-import About from './pages/about'
+import About from './pages/About'
 
 
 
