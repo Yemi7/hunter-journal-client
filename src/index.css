@@ -167,6 +167,12 @@ body {
   z-index: 1;
 }
 
+.enemy-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: 0.2s;
+  cursor: pointer;
+}
+
 /* location list styling */
 .location-list {
   margin: 0 auto;
@@ -182,7 +188,6 @@ body {
 }
 
 .location-item {
-  background-color: rgb(26, 5, 86);
   width: 80%;
   height: 100px;
   margin: 20px auto;
@@ -193,7 +198,9 @@ body {
 }
 
 .location-item:hover {
-  background-color: rgb(36, 10, 96);
+  background-color: rgba(36, 10, 96, 0.5);
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .location-list a {

@@ -168,7 +168,9 @@ function EditEnemy() {
                     Submit
                 </Button>
             </Form>
-
+            <div className="back-button flex">
+                <Button onClick={() => { navigate(`/enemy-details/${enemyId}`) }}>Back</Button>
+            </div>
         </div>
     )
 }

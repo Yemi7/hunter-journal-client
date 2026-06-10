@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 
 function EnemyDetails() {
@@ -10,10 +10,12 @@ function EnemyDetails() {
     const { enemyId } = useParams();
     const [enemy, setEnemy] = useState(null);
     const [fetching, setFetching] = useState(true)
+    const [locations, setLocations] = useState([]);
 
 
     useEffect(() => {
         getEnemyDetails();
+        getLocationsForEnemy();
     }, [])
 
     const getEnemyDetails = async () => {
@@ -37,6 +39,21 @@ function EnemyDetails() {
         }
     }
 
+    const getLocationsForEnemy = async () => {
+        const enemyRes = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies/${enemyId}`)
+        const enemyData = enemyRes.data
+        const locationIdsInEnemy = enemyData.locationIds
+        const locationsInEnemyReq = locationIdsInEnemy.map((locationId) => {
+            return (
+                axios.get(`${import.meta.env.VITE_SERVER_URL}/locations/${locationId}`)
+            )
+        })
+        const locationsInEnemyRes = await Promise.all(locationsInEnemyReq);
+        const locationsInEnemy = locationsInEnemyRes.map((res) => res.data)
+        setLocations(locationsInEnemy)
+    }
+
+
     if (!enemy || fetching) return <h1 className="mt-5 p-5">Loading</h1>
 
     return (
@@ -54,6 +71,25 @@ function EnemyDetails() {
 
                     <p>Enemy Health: {enemy.health}</p>{/* Logic here to store locations in state */}
                     <p>Geo Drops {enemy.geo}</p>
+                    <div className="relation-location-item" key={location.id}>
+                        <h3>Locations this enemy appears</h3>
+                        {
+                            locations.map((location) => {
+                                return (
+                                    <Link
+                                        key={location.id}
+                                        className="location-link"
+                                        to={`/location-details/${location.id}`}
+                                    >
+                                        <p>
+                                            {location.location}
+                                        </p>
+                                    </Link>
+                                )
+                            })
+                        }
+
+                    </div>
                 </div>
                 <div className="edit-enemy-button flex">
                     <Button onClick={() => { navigate(`/edit-enemy/${enemyId}`) }}>Edit</Button>
@@ -65,7 +101,7 @@ function EnemyDetails() {
                     <Button onClick={() => { navigate('/journal') }}>Back</Button>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
