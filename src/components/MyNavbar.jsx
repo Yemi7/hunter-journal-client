@@ -8,9 +8,36 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom'
 import '../index.css'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 function MyNavbar() {
+
+    const [search, setSearch] = useState('');
+    const [foundArray, setFoundArray] = useState([]);
+    /* to do it with useEffect
+        useEffect(() => {
+            if (!search) return;
+            findItem();
+    
+        }, [search])
+     */
+
+    const findItem = async (searchTerm) => {
+        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies?name_like=${searchTerm}`)
+        const responseData = response.data;
+        const foundEnemyNames = responseData.map((enemy) => {
+            return enemy;
+        })
+        setFoundArray(foundEnemyNames)
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+    }
+
     return (
 
         <Navbar className="bg-body-tertiary " fixed='top'>
@@ -19,27 +46,42 @@ function MyNavbar() {
                     <Nav.Link as={Link} to='/'>Home</Nav.Link>
                     <Nav.Link as={Link} to='/about'>About</Nav.Link>
                 </Nav>
-                <Form className='' onSubmit={(e)=>e.preventDefault()}>
+                <Form className='search'>
                     <Row className='m-0 g-0 justify-content-start'>
                         <Col xs="auto" className=''>
                             <Form.Control
-                            size='sm'
+                                size='sm'
                                 type="text"
                                 placeholder="Search"
                                 className=" mr-sm-2"
+                                value={search}
+                                onChange={(e) => { setSearch(e.target.value), findItem(e.target.value) }}
                             />
-                        </Col>
-                        <Col xs="auto" >
-                            <Button 
-                            size='sm' 
-                            type="submit" 
-                            className='p-1 custom-btn black'
-                            onSubmit={(e)=>e.preventDefault()}
-                            >Submit</Button>
                         </Col>
                     </Row>
                 </Form>
             </Container>
+            {
+                search &&
+
+                <div className='search-box'>
+                    {
+                        foundArray.length === 0 ?
+                            <h1>No enemies found</h1> :
+                            foundArray.map((foundEnemy) => {
+                                return (
+                                    <Link
+                                        to={`/enemy-details/${foundEnemy.id}`}
+                                        className='search-link'
+                                        onClick={() => { setSearch('') }}
+                                    >
+                                        <h2> {foundEnemy.name} </h2>
+                                    </Link>
+                                )
+                            })
+                    }
+                </div>
+            }
         </Navbar>
     )
 }

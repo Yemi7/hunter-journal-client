@@ -13,10 +13,11 @@ function EnemyDetails() {
     const [locations, setLocations] = useState([]);
 
 
+
     useEffect(() => {
         getEnemyDetails();
         getLocationsForEnemy();
-    }, [])
+    }, [enemyId])
 
     const getEnemyDetails = async () => {
         try {
@@ -52,6 +53,7 @@ function EnemyDetails() {
         const locationsInEnemy = locationsInEnemyRes.map((res) => res.data)
         setLocations(locationsInEnemy)
     }
+
 
 
     if (!enemy || fetching) return <h1 className="mt-5 p-5">Loading</h1>
