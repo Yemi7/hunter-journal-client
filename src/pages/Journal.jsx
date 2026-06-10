@@ -9,7 +9,9 @@ function Journal() {
 
     const [enemies, setEnemies] = useState([]);
     const [seletedEnemy, setSelectedEnemy] = useState(null);
+    const [seletedEnemyId, setSelectedEnemyId] = useState(null);
     const [fetching, setFetching] = useState(true)
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
 
     useEffect(() => {
         getEnemies();
@@ -28,14 +30,31 @@ function Journal() {
     }
 
     useEffect(() => {
-        if (!seletedEnemy) return;
-        getSingleEnemy();
-    }, [seletedEnemy])
+        if (!seletedEnemyId) return;
+        getSingleEnemy(seletedEnemyId);
+    }, [seletedEnemyId])
 
-    const getSingleEnemy = async () => {
-        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies/${seletedEnemy}`)
-        setSelectedEnemy(response.data)
+    const getSingleEnemy = async (id) => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies/${id}`)
+            setSelectedEnemy(response.data)
 
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+
+    const deleteSingleEnemy = async () => {
+        try {
+            console.log(seletedEnemy);
+            console.log(seletedEnemyId);
+            if (!seletedEnemy) return;
+            const response = await axios.delete(`${import.meta.env.VITE_SERVER_URL}/enemies/${seletedEnemyId}`)
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     if (!enemies || fetching) return <h1 className='mt-5 p-5'>Loading...</h1>
@@ -56,7 +75,7 @@ function Journal() {
                             <div
                                 className='enemy-item'
                                 key={enemy.id}
-                                onClick={() => setSelectedEnemy(enemy.id)}
+                                onClick={() => setSelectedEnemyId(enemy.id)}
                             >
                                 <p>{enemy.name}</p>
                             </div>
@@ -79,7 +98,7 @@ function Journal() {
                     <Button onClick={() => { navigate(`/create-enemy`) }}>create enemy</Button>
                 </div>
                 <div className='delete-button'>
-                    <Button disabled={!seletedEnemy} onClick={() => { }} >delete</Button>
+                    <Button disabled={!seletedEnemy} onClick={() => { deleteSingleEnemy() }} >delete</Button>
                 </div>
 
             </div>

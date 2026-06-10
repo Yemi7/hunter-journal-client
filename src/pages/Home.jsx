@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import { Navigate,useNavigate } from "react-router-dom";
-
+import { Navigate, useNavigate } from "react-router-dom";
+import logoImg from '../resources/images/hk-logo.png'
 
 function Home() {
     const navigate = useNavigate();
@@ -10,7 +10,7 @@ function Home() {
     return (
         <div className="home">
             <div className="cover ">
-                <img src='./src/resources/images/hk-logo.png' className="w-100 h-auto rounded" />
+                <img src={logoImg} className="w-100 h-auto rounded" />
             </div>
             <div className="journal-details mt-5 p-5 rounded">
                 <p className="lh-3">
@@ -20,8 +20,8 @@ function Home() {
                 </p>
             </div>
             <div className="button-container w-100 d-flex justify-content-evenly mt-5">
-                <Button onClick={()=>{navigate('/journal')} } className="button px-5 py-3">Journal</Button>
-                <Button onClick={()=>{navigate('/location-list')} } className="button px-5 py-3">Locations</Button>
+                <Button onClick={() => { navigate('/journal') }} className="button px-5 py-3">Journal</Button>
+                <Button onClick={() => { navigate('/location-list') }} className="button px-5 py-3">Locations</Button>
             </div>
         </div>
 
