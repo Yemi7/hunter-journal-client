@@ -3,7 +3,7 @@ import Home from './pages/Home'
 import Journal from './pages/Journal'
 import MyNavbar from './components/MyNavbar'
 import EnemyDetails from './pages/EnemyDetails'
-import EditEnemey from './pages/EditEnemy'
+import EditEnemy from './pages/EditEnemy'
 import LocationList from './pages/LocationList'
 import LocationDetails from './pages/LocationDetails'
 import CreateEnemy from './pages/CreateEnemy'
@@ -23,7 +23,7 @@ function App() {
           <Route path={"/about"} element={<About />} />
           <Route path={"/journal"} element={<Journal />} />
           <Route path={"/enemy-details/:enemyId"} element={<EnemyDetails />} />
-          <Route path={"/edit-enemy/:enemyId"} element={<EditEnemey />} />
+          <Route path={"/edit-enemy/:enemyId"} element={<EditEnemy />} />
           <Route path={"/create-enemy"} element={<CreateEnemy />} />
           <Route path={"location-list"} element={<LocationList />} />
           <Route path={"location-details/:locationId"} element={<LocationDetails />} />

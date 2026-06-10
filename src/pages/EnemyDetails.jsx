@@ -45,13 +45,15 @@ function EnemyDetails() {
                 <img src={enemy.images} alt="" />
             </div>
             <div className="enemy-details-grid">
-                <div className="enemy-details-description flex">
+                <div className="enemy-details-description flex-column">
                     <p>{enemy.behaviour}</p>
                     <p>{enemy.briefDescription}</p>
                 </div>
-                <div className="enemy-more-details flex">
+                <div className="enemy-more-details flex-column">
                     <p>{enemy.name}</p>
-                    <p>{ }</p>{/* Logic here to store locations in state */}
+
+                    <p>Enemy Health: {enemy.health}</p>{/* Logic here to store locations in state */}
+                    <p>Geo Drops {enemy.geo}</p>
                 </div>
                 <div className="edit-enemy-button flex">
                     <Button onClick={() => { navigate(`/edit-enemy/${enemyId}`) }}>Edit</Button>

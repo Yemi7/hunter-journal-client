@@ -147,7 +147,6 @@ body {
   border: 1px solid red;
 }
 
-
 .delete-button {
   grid-area: 9 / 3 / 10 / 4;
   display: flex;
@@ -262,6 +261,13 @@ body {
 .flex {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
 }
 

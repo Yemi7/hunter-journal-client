@@ -20,7 +20,6 @@ function CreateEnemy() {
     useEffect(() => {
         getLocations();
     }, [])
-
     const getLocations = async () => {
         try {
             const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/locations`)
@@ -89,7 +88,6 @@ function CreateEnemy() {
                             </Form.Check>
                         )
                     })}
-
                 </Form.Group>
                 <Form.Group className='mb-3'>
                     <Form.Label>Enemy Name</Form.Label>
