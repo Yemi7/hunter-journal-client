@@ -70,22 +70,27 @@ function LocationDetails() {
                     )
                 })}
             </Carousel>
+
             <div className="location-details-grid">
-                <div className="location-details-description flex">
-                    {location.description}
-                </div>
-                <div className="location-more-details flex-column">
+                <div className="location-details-description flex-column">
+                    <h3>Description: </h3>
+                    <p>{location.description}</p>
                     {
                         location.tramAccess ?
-                            <p>This location can be accessed through the trams</p> :
-                            <p>This location can't be accessed through trams</p>
+                            <p >This location can be accessed through the trams</p> :
+                            <p >This location can't be accessed through trams</p>
                     }
-                    <div >
-                        <h2 className='mb-5'>Enemies in this location</h2>
+                </div>
+                <div className="location-more-details flex-column">
+
+                    <h3 className='mb-5'>Enemies in this location</h3>
+                    <div className='relation-enemy-item flex-column'>
+
                         {
                             enemies.map((enemy) => {
                                 return (
                                     <Link
+                                        className='enemy-link'
                                         to={`/enemy-details/${enemy.id}`}
                                         key={enemy.id}
                                     >
@@ -97,10 +102,9 @@ function LocationDetails() {
                             })
                         }
                     </div>
-
                 </div>
                 <div className="location-back-button flex">
-                    <Button className='back-button-item' onClick={() => { navigate('/location-list') }}>Back</Button>
+                    <button className='btn' onClick={() => { navigate('/location-list') }}>Back</button>
                 </div>
             </div>
 

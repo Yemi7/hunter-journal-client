@@ -1,6 +1,5 @@
-
 .search-box {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   position: absolute;
   top: 56px;
   left: 0;
@@ -8,4 +7,28 @@
   height: calc(100vh - 56px);
   display: flex;
   flex-direction: column;
+  overflow: scroll;
+  flex-wrap: nowrap;
+  justify-content: start;
+  align-items: center;
+}
+
+.search-link {
+  text-decoration-color: rgb(202, 202, 202);
+  text-underline-offset: 0.3em;
+
+  h2 {
+    width: 600px;
+    color: rgb(202, 202, 202);
+    margin-bottom: 30px;
+    font-size: 3em;
+    padding: 5px;
+    border-radius: 3px;
+  }
+  h2:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  h2:active {
+    color: rgb(36, 10, 96);
+  }
 }
