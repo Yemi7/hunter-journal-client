@@ -8,12 +8,24 @@
   flex-direction: column;
   justify-content: space-evenly;
   /* add media for smaller screens */
+  @media only screen and (max-width: 1000px) {
+    width: 100%;
+  }
+  @media only screen and (max-width: 360px) {
+    overflow: hidden;
+  }
 }
-
 .dark .home {
   background-color: rgba(0, 0, 0, 0.8);
+  @media only screen and (max-width: 360px) {
+    overflow: hidden;
+  }
 }
 
 .journal-details {
   background-color: rgb(12, 13, 20);
+}
+
+.cover {
+  margin-top: 70px;
 }

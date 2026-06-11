@@ -61,6 +61,9 @@ function EnemyDetails() {
 
     return (
         <div className="enemy-details">
+            <div className="enemy-details-name">
+                <h1>{enemy.name}</h1>
+            </div>
             <div className="enemy-details-picture">
                 <img src={enemy.images} alt="" />
             </div>
@@ -68,17 +71,16 @@ function EnemyDetails() {
                 <div className="enemy-details-description flex-column">
                     <p>{enemy.behaviour}</p>
                     <p>{enemy.briefDescription}</p>
+                    <p>Enemy Health: {enemy.health}</p>{/* Logic here to store locations in state */}
+                    <p>Geo {enemy.geo}</p>
                 </div>
                 <div className="enemy-more-details flex-column">
-                    <p>{enemy.name}</p>
-
-                    <p>Enemy Health: {enemy.health}</p>{/* Logic here to store locations in state */}
-                    <p>Geo Drops {enemy.geo}</p>
+                    <h3>Locations this enemy appears</h3>
                     <div className="relation-location-item" key={location.id}>
-                        <h3>Locations this enemy appears</h3>
                         {
                             locations.map((location) => {
                                 return (
+
                                     <Link
                                         key={location.id}
                                         className="location-link"
@@ -95,13 +97,13 @@ function EnemyDetails() {
                     </div>
                 </div>
                 <div className="edit-enemy-button flex">
-                    <Button onClick={() => { navigate(`/edit-enemy/${enemyId}`) }}>Edit</Button>
+                    <button className="btn" onClick={() => { navigate(`/edit-enemy/${enemyId}`) }}>Edit</button>
                 </div>
                 <div className="delete-enemy-button flex">
-                    <Button onClick={() => { deleteEnemy() }}>Delete</Button>
+                    <button className="btn" onClick={() => { deleteEnemy() }}>Delete</button>
                 </div>
                 <div className="back-button flex">
-                    <Button onClick={() => { navigate('/journal') }}>Back</Button>
+                    <button className="btn" onClick={() => { navigate('/journal') }}>Back</button>
                 </div>
             </div>
         </div >

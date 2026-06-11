@@ -11,7 +11,7 @@ function Home() {
     return (
         <div className="home">
             <div className="cover ">
-                <img src={logoImg} className="w-100 h-auto rounded" />
+                <img src={logoImg} className="w-100 h-auto rounded cover-image" />
             </div>
             <div className="journal-details mt-5 p-5 rounded">
                 <p className="lh-3">

@@ -33,6 +33,7 @@ function LocationDetails() {
             const locationRes = await axios.get(`${import.meta.env.VITE_SERVER_URL}/locations/${locationId}`)
             const locationData = locationRes.data
             const enemiesFromLocation = locationData.enemyIds;
+            console.log(enemiesFromLocation);
             const enemiesFromLocationReq = enemiesFromLocation.map((enemyId) => {
                 return (
                     axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies/${enemyId}`)
@@ -44,7 +45,7 @@ function LocationDetails() {
 
 
         } catch (error) {
-
+            console.log(error);
         }
     }
 
@@ -57,7 +58,6 @@ function LocationDetails() {
                     return (
                         <Carousel.Item key={i}>
                             <img
-                                src=""
                                 src={image}
                                 alt={`Slide ${i + 1}`}
                             />

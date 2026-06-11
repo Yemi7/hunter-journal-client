@@ -2,55 +2,163 @@
 
 .enemy-details {
   height: calc(100vh - 56px);
-  width: 95vw;
+  width: 992px;
   margin: 56px auto 0;
   display: flex;
   flex-direction: column;
+  @media only screen and (max-height: 930px) {
+    height: 930px;
+  }
+  @media only screen and (max-width: 992px) {
+    width: 100%;
+  }
 }
 
 .dark .enemy-details {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+.enemy-details-name {
+  margin-top: 50px;
+  h1 {
+    font-size: 4em;
+  }
+}
+
 .enemy-details-picture {
-  height: 15%;
+  margin: 50px auto;
   width: 100%;
+
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(to right, transparent, white, transparent) 1;
 }
 
 .enemy-details-picture img {
-  height: 100%;
+  height: 150px;
   width: auto;
 }
 
 .enemy-details-grid {
-  height: 85%;
+  height: 100%;
   display: grid;
   width: 100%;
   grid-template: repeat(6, 1fr) / repeat(2, 1fr);
-  gap: 10px;
 }
 
 .enemy-details-description {
-  border: 1px solid red;
-  grid-area: 1/1/4/2;
+  justify-content: space-between;
+  grid-area: 1/1/5/2;
+  border-top: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-image: linear-gradient(
+      to bottom right,
+      transparent,
+      white,
+      transparent
+    )
+    1;
+  p {
+    width: 80%;
+    text-align: start;
+    font-size: 1.2em;
+  }
 }
 
 .enemy-more-details {
-  border: 1px solid red;
-  grid-area: 1/2/4/3;
+  grid-area: 1/2/5/3;
+  max-height: 100%;
+  justify-content: space-between;
+  border-top: 3px solid white;
+  border-image: linear-gradient(to right, white, transparent) 1;
+  h3 {
+    flex-wrap: nowrap;
+    font-size: 2em;
+  }
+}
+
+.relation-location-item {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 250px;
+  color: rgb(202, 202, 202);
+  overflow-y: scroll;
+  .location-link {
+    text-decoration-color: rgb(202, 202, 202);
+    text-underline-offset: 0.3em;
+    p {
+      color: rgb(202, 202, 202);
+
+      border-radius: 3px;
+      padding: 5px;
+    }
+    p:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transition: 0.3s;
+    }
+  }
 }
 
 .edit-enemy-button {
-  border: 1px solid red;
   grid-area: 5/1/6/2;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(to right, transparent, white) 1;
+  border-top: 3px solid transparent;
 }
 
 .delete-enemy-button {
-  border: 1px solid red;
   grid-area: 5/2/6/3;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(to right, white, transparent) 1;
 }
 
 .back-button {
-  border: 1px solid red;
   grid-area: 6/1/7/3;
+}
+
+.dark .edit-enemy-button .btn,
+.dark .back-button .btn {
+  background-color: rgb(36, 10, 96);
+  border: none;
+  padding: 10px;
+  width: 120px;
+  color: rgb(202, 202, 202);
+}
+
+.dark .edit-enemy-button .btn:hover,
+.dark .back-button :hover {
+  background-color: rgba(36, 10, 96, 0);
+  border: 2px solid rgb(36, 10, 96);
+}
+
+.dark .edit-enemy-button .btn:active,
+.dark .back-button :active {
+  background-color: rgba(36, 10, 96, 0);
+  border: 2px solid rgb(202, 202, 202);
+}
+
+.dark .back-button .btn:disabled {
+  background-color: rgb(36, 10, 96);
+}
+
+.delete-enemy-button .btn {
+  background-color: rgb(227, 6, 6);
+  border: none;
+  padding: 10px;
+  width: 120px;
+  color: rgb(202, 202, 202);
+}
+
+.delete-enemy-button .btn:hover {
+  background-color: rgba(36, 10, 96, 0);
+  border: 2px solid rgb(224, 10, 10);
+}
+
+.delete-enemy-button .btn:active {
+  color: red;
+}
+
+.delete-enemy-button .btn:disabled {
+  background-color: rgb(227, 6, 6);
 }
