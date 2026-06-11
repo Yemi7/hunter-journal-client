@@ -1,0 +1,11 @@
+
+.search-box {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 56px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 56px);
+  display: flex;
+  flex-direction: column;
+}

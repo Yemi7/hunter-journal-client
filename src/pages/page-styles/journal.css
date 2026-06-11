@@ -1,0 +1,287 @@
+/* journal styling */
+.journal {
+  height: calc(100vh - 56px);
+  width: 1200px;
+  margin: 56px auto 0;
+  display: flex;
+  flex-direction: column;
+  /* adjust for smaller screen */
+  @media only screen and (max-width: 1200px) {
+    width: 992px;
+  }
+  @media only screen and (max-width: 992px) {
+    width: 768px;
+  }
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 576px) {
+    width: 100%;
+    height: calc(100vh - 56px);
+  }
+}
+
+.dark .journal {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.enemy-grid {
+  width: 100%;
+  height: calc(100% - 56px);
+  padding: 0 30px;
+  margin: 0 auto;
+  display: grid;
+  grid-template: repeat(9, 1fr) / repeat(7, 1fr);
+  gap: 30px;
+  @media only screen and (max-width: 1200px) {
+    gap: 10px;
+  }
+  @media only screen and (max-width: 1000px) {
+  }
+  @media only screen and (max-width: 576px) {
+    grid-template: repeat(9, 1fr) / repeat(4, 1fr);
+  }
+}
+
+.enemy-list {
+  grid-area: 1 / 1 / 10 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  overflow-y: scroll;
+  max-height: 100%;
+  position: relative;
+
+  @media only screen and (max-width: 576px) {
+    grid-area: 1 / 1 / 10 / 3;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, white, transparent);
+    }
+  }
+}
+
+.enemy-item {
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  z-index: 1;
+  position: relative;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  @media only screen and (max-width: 1200px) {
+    padding: 20px 0;
+    font-size: 1em;
+  }
+}
+
+.enemy-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(to right, transparent, white, transparent) 1;
+  pointer-events: none;
+}
+
+.enemy-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: -1;
+}
+
+.enemy-item:hover::before {
+  opacity: 1;
+}
+
+.enemy-picture-box {
+  grid-area: 1 / 3 / 10 / 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: solid 3px rgb(202, 202, 202);
+  border-right: solid 3px rgb(202, 202, 202);
+  border-image: linear-gradient(to top, transparent, white, transparent) 1;
+  height: 92%;
+  align-self: center;
+  @media only screen and (max-width: 768px) {
+    justify-content: flex-start;
+  }
+  @media only screen and (max-width: 576px) {
+    grid-area: 1 / 3 / 3 / 5;
+    border-bottom: solid 3px rgb(202, 202, 202);
+    border-image: linear-gradient(to right, transparent, white, transparent) 1;
+    height: 100%;
+    justify-content: center;
+  }
+}
+
+.enemy-image {
+  max-width: 576px;
+  height: auto;
+  max-height: 90%;
+  @media only screen and (max-width: 768px) {
+    height: 100px;
+    width: auto;
+    margin-top: 200px;
+  }
+  @media only screen and (max-width: 576px) {
+    height: 100px;
+    width: auto;
+    margin: 0 auto;
+  }
+}
+
+.enemy-name {
+  grid-area: 1 / 6 / 3 / 8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(to right, transparent, white, transparent) 1;
+  @media only screen and (max-width: 576px) {
+    grid-area: 3 / 3 / 5 / 5;
+  }
+}
+
+.enemy-name h1 {
+  @media only screen and (max-width: 1200px) {
+    font-size: 2em;
+  }
+}
+
+.enemy-description {
+  grid-area: 3 / 6 / 6 / 8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(to right, transparent, white, transparent) 1;
+  max-width: 100%;
+  @media only screen and (max-width: 576px) {
+    grid-area: 5 / 3 / 7 / 5;
+    height: 100%;
+  }
+}
+
+.enemy-description p {
+  font-size: 1.5em;
+  min-width: 0;
+  width: 60%;
+  @media only screen and (max-width: 1200px) {
+    font-size: 1.3em;
+    width: 80%;
+    max-width: 80%;
+  }
+  @media only screen and (max-width: 576px) {
+    font-size: 1em;
+    width: 80%;
+    max-width: 80%;
+  }
+}
+
+.details-button {
+  grid-area: 7 / 6 / 8 / 8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (max-width: 576px) {
+    grid-area: 8 / 3 / 9 / 5;
+  }
+}
+
+.create-enemy-button {
+  grid-area: 6 / 6 / 7 / 8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (max-width: 576px) {
+    grid-area: 7 / 3 / 8 / 5;
+  }
+}
+
+.delete-button {
+  grid-area: 8 / 6 / 9 / 8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(to right, transparent, white, transparent) 1;
+  @media only screen and (max-width: 576px) {
+    grid-area: 9 / 3 / 10 / 5;
+    border: none;
+  }
+}
+
+.dark .create-enemy-button .btn,
+.dark .details-button .btn {
+  background-color: rgb(36, 10, 96);
+  border: none;
+  padding: 10px;
+  width: 120px;
+  color: rgb(202, 202, 202);
+}
+
+.dark .create-enemy-button .btn:hover,
+.dark .details-button :hover {
+  background-color: rgba(36, 10, 96, 0);
+  border: 2px solid rgb(36, 10, 96);
+}
+
+.dark .create-enemy-button .btn:active,
+.dark .details-button :active {
+  background-color: rgba(36, 10, 96, 0);
+  border: 2px solid rgb(202, 202, 202);
+}
+
+.dark .details-button .btn:disabled {
+  background-color: rgb(36, 10, 96);
+}
+
+.delete-button .btn {
+  background-color: rgb(227, 6, 6);
+  border: none;
+  padding: 10px;
+  width: 120px;
+  color: rgb(202, 202, 202);
+}
+
+.delete-button .btn:hover {
+  background-color: rgba(36, 10, 96, 0);
+  border: 2px solid rgb(224, 10, 10);
+}
+
+.delete-button .btn:active {
+  color: red;
+}
+
+.delete-button .btn:disabled {
+  background-color: rgb(227, 6, 6);
+}

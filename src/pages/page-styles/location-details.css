@@ -1,0 +1,38 @@
+/* location details page */
+.location-details-page {
+  width: 1000px;
+  margin: 56px auto 0;
+  min-height: 100vh;
+  border: 1px fuchsia solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.dark .location-details-page {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel {
+  color: red;
+  width: 95%;
+  margin: 35px auto 50px;
+}
+
+.location-details-grid {
+  display: grid;
+  grid-template: repeat(6, 1fr) / repeat(2, 1fr);
+  height: 600px;
+}
+.location-details-description {
+  grid-area: 1/1/5/2;
+}
+.location-more-details {
+  grid-area: 1/2/5/3;
+}
+.location-back-button {
+  grid-area: 6/1/7/3;
+}
+
+.location-back-button .back-button-item {
+  background-color: black;
+}

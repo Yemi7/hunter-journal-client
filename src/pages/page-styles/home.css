@@ -1,0 +1,19 @@
+/* home styling */
+.home {
+  width: 1000px;
+  margin: 0 auto;
+  min-height: 100vh;
+  border: 1px fuchsia solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* add media for smaller screens */
+}
+
+.dark .home {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.journal-details {
+  background-color: rgb(12, 13, 20);
+}

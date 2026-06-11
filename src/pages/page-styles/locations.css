@@ -1,0 +1,34 @@
+/* location list styling */
+.location-list {
+  margin: 0 auto;
+  padding-top: 56px;
+  padding-bottom: 30px;
+  min-height: calc(100vh);
+  width: 1000px;
+  /* adjust width for smaller screens */
+}
+
+.dark .location-list {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.location-list a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.location-item {
+  width: 80%;
+  height: 100px;
+  margin: 20px auto;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.location-item:hover {
+  background-color: rgba(36, 10, 96, 0.5);
+  cursor: pointer;
+  transition: 0.2s;
+}

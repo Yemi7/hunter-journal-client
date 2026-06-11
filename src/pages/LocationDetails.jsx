@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import './page-styles/location-details.css'
 function LocationDetails() {
     const navigate = useNavigate();
 

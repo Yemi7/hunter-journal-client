@@ -1,0 +1,56 @@
+/* enemy details page */
+
+.enemy-details {
+  height: calc(100vh - 56px);
+  width: 95vw;
+  margin: 56px auto 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dark .enemy-details {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.enemy-details-picture {
+  height: 15%;
+  width: 100%;
+}
+
+.enemy-details-picture img {
+  height: 100%;
+  width: auto;
+}
+
+.enemy-details-grid {
+  height: 85%;
+  display: grid;
+  width: 100%;
+  grid-template: repeat(6, 1fr) / repeat(2, 1fr);
+  gap: 10px;
+}
+
+.enemy-details-description {
+  border: 1px solid red;
+  grid-area: 1/1/4/2;
+}
+
+.enemy-more-details {
+  border: 1px solid red;
+  grid-area: 1/2/4/3;
+}
+
+.edit-enemy-button {
+  border: 1px solid red;
+  grid-area: 5/1/6/2;
+}
+
+.delete-enemy-button {
+  border: 1px solid red;
+  grid-area: 5/2/6/3;
+}
+
+.back-button {
+  border: 1px solid red;
+  grid-area: 6/1/7/3;
+}

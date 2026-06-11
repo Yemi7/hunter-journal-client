@@ -1,0 +1,35 @@
+/* edit enemy page */
+
+.edit-enemy-page {
+  min-height: calc(100vh - 56px);
+  width: 80vw;
+  margin: 56px auto 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.dark .edit-enemy-page {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.current-enemy {
+  display: flex;
+  width: 100%;
+}
+
+.edit-enemy-picture {
+  width: 50%;
+  height: 200px;
+}
+.edit-enemy-picture img {
+  height: auto;
+}
+
+.edit-enemy-name {
+  width: 50%;
+  height: 200px;
+}
+
+.edit-enemy-form {
+  padding: 50px;
+}

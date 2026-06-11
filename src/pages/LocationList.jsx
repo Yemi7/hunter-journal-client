@@ -1,6 +1,7 @@
 import axios from "axios";
 import { use, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import './page-styles/locations.css'
 
 
 function LocationList() {
@@ -30,12 +31,6 @@ function LocationList() {
     return (
 
         <div className="location-list">
-            {/* <Link to={`/location-details/${0}`}> */}
-                {/* <div className="location-item">
-                    <h1>Location</h1>
-                </div>
-                 */}
-            {/* </Link> */}
             {locations.map((location)=>{
                 return(
                     <div 

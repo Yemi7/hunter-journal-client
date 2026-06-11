@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Navigate, useNavigate } from "react-router-dom";
 import logoImg from '../resources/images/hk-logo.png'
+import './page-styles/home.css'
 
 function Home() {
     const navigate = useNavigate();

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate, useParams } from 'react-router-dom';
+import './page-styles/edit-enemy.css'
 
 function EditEnemy() {
     const navigate = useNavigate()

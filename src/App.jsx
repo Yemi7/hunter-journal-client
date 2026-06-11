@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Home from './pages/Home'
 import Journal from './pages/Journal'
 import MyNavbar from './components/MyNavbar'
@@ -9,14 +9,18 @@ import LocationDetails from './pages/LocationDetails'
 import CreateEnemy from './pages/CreateEnemy'
 import { Route, Routes } from 'react-router-dom'
 import About from './pages/About'
+import { ThemeContext } from './context/theme.context'
+
 
 
 
 function App() {
 
+  const { theme, setTheme } = useContext(ThemeContext);
+
   return (
-    <div>
-      <MyNavbar />
+    <div className={theme}>
+      <MyNavbar theme={theme} setTheme={setTheme} />
       <div className='dark mx-auto my-0'>
         <Routes>
           <Route path={"/"} element={<Home />} />

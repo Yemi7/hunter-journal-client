@@ -1,14 +1,18 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from '../context/theme.context';
+import './page-styles/journal.css'
 
 
 function Journal() {
     const navigate = useNavigate();
+
+    const { theme, setTheme } = useContext(ThemeContext);
 
     const [enemies, setEnemies] = useState([]);
     const [seletedEnemy, setSelectedEnemy] = useState(null);
@@ -95,7 +99,7 @@ function Journal() {
 
     return (
         <div className="journal">
-            <Form data-bs-theme="dark" className='filter-select'>
+            <Form data-bs-theme={theme} className='filter-select'>
                 <FloatingLabel
                     controlId='floatingSelect'
                     label="Choose a Location">
@@ -141,19 +145,19 @@ function Journal() {
                     {seletedEnemy ? <img className='enemy-image' src={seletedEnemy.images} /> : 'image'}
                 </div>
                 <div className='enemy-name'>
-                    {seletedEnemy ? seletedEnemy.name : 'name'}
+                    {seletedEnemy ? <h1>{seletedEnemy.name}</h1> : 'name'}
                 </div>
                 <div className='enemy-description'>
-                    {seletedEnemy ? seletedEnemy.briefDescription : 'description'}
+                    {seletedEnemy ? <p>{seletedEnemy.briefDescription}</p> : 'description'}
                 </div>
                 <div className='details-button'>
-                    <Button disabled={!seletedEnemy} onClick={() => { navigate(`/enemy-details/${seletedEnemy.id}`) }}>details</Button>
+                    <button className='btn' disabled={!seletedEnemy} onClick={() => { navigate(`/enemy-details/${seletedEnemy.id}`) }}>details</button>
                 </div>
                 <div className='create-enemy-button'>
-                    <Button onClick={() => { navigate(`/create-enemy`) }}>create enemy</Button>
+                    <button className='btn' onClick={() => { navigate(`/create-enemy`) }}>create enemy</button>
                 </div>
                 <div className='delete-button'>
-                    <Button disabled={!seletedEnemy} onClick={() => { deleteSingleEnemy() }} >delete</Button>
+                    <button className='btn' disabled={!seletedEnemy} onClick={() => { deleteSingleEnemy() }} >delete</button>
                 </div>
 
             </div>

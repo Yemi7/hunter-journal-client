@@ -8,21 +8,16 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom'
 import '../index.css'
+import './MyNavbar.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 
-function MyNavbar() {
+function MyNavbar({ theme, setTheme }) {
 
     const [search, setSearch] = useState('');
     const [foundArray, setFoundArray] = useState([]);
-    /* to do it with useEffect
-        useEffect(() => {
-            if (!search) return;
-            findItem();
-    
-        }, [search])
-     */
+
 
     const findItem = async (searchTerm) => {
         const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies?name_like=${searchTerm}`)
@@ -37,10 +32,11 @@ function MyNavbar() {
         e.preventDefault();
 
     }
+    console.log(theme);
 
     return (
 
-        <Navbar className="bg-body-tertiary " fixed='top'>
+        <Navbar className="bg-body-tertiary" data-bs-theme={theme} fixed='top'>
             <Container className=''>
                 <Nav>
                     <Nav.Link as={Link} to='/'>Home</Nav.Link>
