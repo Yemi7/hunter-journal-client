@@ -10,6 +10,7 @@ import CreateEnemy from './pages/CreateEnemy'
 import { Route, Routes } from 'react-router-dom'
 import About from './pages/About'
 import { ThemeContext } from './context/theme.context'
+import ErrorPage from './pages/ErrorPage'
 
 
 
@@ -31,6 +32,8 @@ function App() {
           <Route path={"/create-enemy"} element={<CreateEnemy />} />
           <Route path={"location-list"} element={<LocationList />} />
           <Route path={"location-details/:locationId"} element={<LocationDetails />} />
+          <Route path="*" element={<ErrorPage />} />
+          <Route path="/error" element={<ErrorPage />} />
         </Routes>
       </div>
     </div>

@@ -28,6 +28,7 @@ function CreateEnemy() {
 
         } catch (error) {
             console.log(error);
+            navigate('/error')
         }
     }
 
@@ -51,6 +52,7 @@ function CreateEnemy() {
             const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/enemies`, body)
         } catch (error) {
             console.log(error);
+            navigate('/error')
         }
 
         console.log(body)

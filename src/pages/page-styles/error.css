@@ -1,0 +1,32 @@
+.error-page {
+  width: 1000px;
+  margin: 0 auto;
+  min-height: 100vh;
+  border: 1px fuchsia solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* add media for smaller screens */
+  @media only screen and (max-width: 1000px) {
+    width: 100%;
+  }
+  @media only screen and (max-width: 360px) {
+    overflow: hidden;
+  }
+}
+.dark .error-page {
+  background-color: rgba(0, 0, 0, 0.8);
+  @media only screen and (max-width: 360px) {
+    overflow: hidden;
+  }
+}
+
+.error-img {
+  width: 500px;
+  margin-bottom: 100px;
+}
+
+.error-page h1{
+margin-bottom: 50px;
+}

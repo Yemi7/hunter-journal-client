@@ -27,6 +27,7 @@ function EnemyDetails() {
             setFetching(false);
         } catch (error) {
             console.log(error)
+            navigate('/error')
         }
     }
 
@@ -38,21 +39,30 @@ function EnemyDetails() {
 
         } catch (error) {
             console.log(error);
+            navigate('/error')
         }
     }
 
     const getLocationsForEnemy = async () => {
-        const enemyRes = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies/${enemyId}`)
-        const enemyData = enemyRes.data
-        const locationIdsInEnemy = enemyData.locationIds
-        const locationsInEnemyReq = locationIdsInEnemy.map((locationId) => {
-            return (
-                axios.get(`${import.meta.env.VITE_SERVER_URL}/locations/${locationId}`)
-            )
-        })
-        const locationsInEnemyRes = await Promise.all(locationsInEnemyReq);
-        const locationsInEnemy = locationsInEnemyRes.map((res) => res.data)
-        setLocations(locationsInEnemy)
+        try {
+            const enemyRes = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies/${enemyId}`)
+            const enemyData = enemyRes.data
+            const locationIdsInEnemy = enemyData.locationIds
+
+            const locationsInEnemyReq = locationIdsInEnemy.map((locationId) => {
+                return (
+                    axios.get(`${import.meta.env.VITE_SERVER_URL}/locations/${locationId}`)
+                )
+            })
+
+            const locationsInEnemyRes = await Promise.all(locationsInEnemyReq);
+            const locationsInEnemy = locationsInEnemyRes.map((res) => res.data)
+            setLocations(locationsInEnemy)
+
+        } catch (error) {
+            console.log(error);
+            navigate('/error')
+        }
     }
 
 

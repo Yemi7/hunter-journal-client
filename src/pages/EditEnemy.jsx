@@ -34,19 +34,26 @@ function EditEnemy() {
 
         } catch (error) {
             console.log(error);
+            navigate('/error')
         }
     }
 
     const getEnemy = async () => {
-        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies/${enemyId}`)
-        setName(response.data.name);
-        setImage(response.data.images);
-        setBriefDescription(response.data.briefDescription)
-        setBehaviour(response.data.behaviour)
-        setHealth(response.data.health)
-        setGeo(response.data.geo)
-        setLocationIds(response.data.locationIds)
-        setFetching(false)
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies/${enemyId}`)
+            setName(response.data.name);
+            setImage(response.data.images);
+            setBriefDescription(response.data.briefDescription)
+            setBehaviour(response.data.behaviour)
+            setHealth(response.data.health)
+            setGeo(response.data.geo)
+            setLocationIds(response.data.locationIds)
+            setFetching(false)
+
+        } catch (error) {
+            console.log(error);
+            navigate('/error')
+        }
 
     }
 
@@ -64,8 +71,13 @@ function EditEnemy() {
             locationIds: locationIds,
         }
 
-        const response = await axios.put(`${import.meta.env.VITE_SERVER_URL}/enemies/${enemyId}`, body)
-        navigate(`/enemy-details/${enemyId}`);
+        try {
+            const response = await axios.put(`${import.meta.env.VITE_SERVER_URL}/enemies/${enemyId}`, body)
+            navigate(`/enemy-details/${enemyId}`);
+        } catch (error) {
+            console.log(error);
+            navigate('/error')
+        }
 
     }
 

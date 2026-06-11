@@ -32,10 +32,12 @@ function Journal() {
             const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies`)
             const enemiesRes = response.data
             setEnemies(enemiesRes);
+            setSelectedEnemyId(enemiesRes[0]?.id)
             setFetching(false)
 
         } catch (error) {
             console.log(error);
+            navigate('/error')
         }
     }
 
@@ -51,6 +53,7 @@ function Journal() {
 
         } catch (error) {
             console.log(error);
+            navigate('/error')
         }
 
     }
@@ -59,17 +62,36 @@ function Journal() {
     const deleteSingleEnemy = async () => {
         try {
             if (!seletedEnemy) return;
+
+            const locationUpdateRequests = seletedEnemy.locationIds.map(async (locationId) => {
+                const locationRes = await axios.get(`${import.meta.env.VITE_SERVER_URL}/locations/${locationId}`)
+                const locationData = locationRes.data
+                return await axios.patch(`${import.meta.env.VITE_SERVER_URL}/locations/${locationId}`, {
+                    enemyIds: locationData.enemyIds.filter(id => id !== seletedEnemyId)
+                })
+
+            })
+
+            await Promise.all(locationUpdateRequests);
+
             const response = await axios.delete(`${import.meta.env.VITE_SERVER_URL}/enemies/${seletedEnemyId}`)
             setSelectedEnemy(null);
             getEnemies();
         } catch (error) {
             console.log(error);
+            navigate('/error')
         }
     }
 
     const getLocations = async () => {
-        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/locations`)
-        setLocations(response.data);
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/locations`)
+            setLocations(response.data);
+
+        } catch (error) {
+            console.log(error);
+            navigate('/error')
+        }
     }
 
     useEffect(() => {
@@ -92,6 +114,7 @@ function Journal() {
             setEnemies(enemyData);
         } catch (error) {
             console.log(error);
+            navigate('/error')
         }
     }
 

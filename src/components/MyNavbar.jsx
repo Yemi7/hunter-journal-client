@@ -20,12 +20,17 @@ function MyNavbar({ theme, setTheme }) {
 
 
     const findItem = async (searchTerm) => {
-        const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies?name_like=${searchTerm}`)
-        const responseData = response.data;
-        const foundEnemyNames = responseData.map((enemy) => {
-            return enemy;
-        })
-        setFoundArray(foundEnemyNames)
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies?name_like=${searchTerm}`)
+            const responseData = response.data;
+            const foundEnemyNames = responseData.map((enemy) => {
+                return enemy;
+            })
+            setFoundArray(foundEnemyNames)
+        } catch (error) {
+            console.log(error);
+            navigate('/error')
+        }
     }
 
     const handleSubmit = async (e) => {

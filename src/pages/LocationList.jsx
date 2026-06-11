@@ -11,32 +11,33 @@ function LocationList() {
     const [locations, setLocations] = useState([])
     const [fetching, setFetching] = useState(true)
 
-    useEffect(()=>{
+    useEffect(() => {
         getLocations();
-    },[])
+    }, [])
 
     const getLocations = async () => {
         try {
             const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/locations`)
 
             setLocations(response.data)
-            setFetching(false);   
+            setFetching(false);
         } catch (error) {
             console.log(error)
+            navigate('/error')
         }
     }
 
-    if(fetching) return <h1 className="mt-5 p-5">Loading</h1>
+    if (fetching) return <h1 className="mt-5 p-5">Loading</h1>
 
     return (
 
         <div className="location-list">
-            {locations.map((location)=>{
-                return(
-                    <div 
-                    className="location-item"
-                    key={location.id}
-                    onClick={()=>{navigate(`/location-details/${location.id}`)}}
+            {locations.map((location) => {
+                return (
+                    <div
+                        className="location-item"
+                        key={location.id}
+                        onClick={() => { navigate(`/location-details/${location.id}`) }}
                     >
                         <h1>{location.location}</h1>
                     </div>
