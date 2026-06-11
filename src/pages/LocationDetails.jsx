@@ -84,25 +84,31 @@ function LocationDetails() {
                 </div>
                 <div className="location-more-details flex-column">
 
-                    <h3 className='mb-5'>Enemies in this location</h3>
-                    <div className='relation-enemy-item flex-column'>
+                    {
+                        enemies.length === 0 ?
+                            <div className='no-enemies-container' >
+                                <h3 className='no-enemies' >There are no Enemies in this location</h3>
+                            </div> :
+                            <>
+                                <h3 className='mb-5'>Enemies in this location</h3>
+                                <div className='relation-enemy-item flex-column'>
+                                    {enemies.map((enemy) => {
+                                        return (
+                                            <Link
+                                                className='enemy-link'
+                                                to={`/enemy-details/${enemy.id}`}
+                                                key={enemy.id}
+                                            >
+                                                <p key={enemy.id}>
+                                                    {enemy.name}
+                                                </p>
+                                            </Link>
+                                        )
+                                    })}
 
-                        {
-                            enemies.map((enemy) => {
-                                return (
-                                    <Link
-                                        className='enemy-link'
-                                        to={`/enemy-details/${enemy.id}`}
-                                        key={enemy.id}
-                                    >
-                                        <p key={enemy.id}>
-                                            {enemy.name}
-                                        </p>
-                                    </Link>
-                                )
-                            })
-                        }
-                    </div>
+                                </div>
+                            </>
+                    }
                 </div>
                 <div className="location-back-button flex">
                     <button className='btn' onClick={() => { navigate('/location-list') }}>Back</button>

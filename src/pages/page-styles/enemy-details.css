@@ -164,3 +164,14 @@
 .delete-enemy-button .btn:disabled {
   background-color: rgb(227, 6, 6);
 }
+
+.no-enemies-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-enemies {
+  width: 80%;
+}
