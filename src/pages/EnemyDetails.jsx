@@ -24,6 +24,7 @@ function EnemyDetails() {
         try {
             const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies/${enemyId}`)
             setEnemy(response.data)
+            console.log(response.data);
             setFetching(false);
         } catch (error) {
             console.log(error)
@@ -33,9 +34,18 @@ function EnemyDetails() {
 
     const deleteEnemy = async () => {
         try {
+            const locationUpdateRequests = enemy.locationIds.map(async (locationId) => {
+                const locationRes = await axios.get(`${import.meta.env.VITE_SERVER_URL}/locations/${locationId}`)
+                const locationData = locationRes.data
+                return await axios.patch(`${import.meta.env.VITE_SERVER_URL}/locations/${locationId}`, {
+                    enemyIds: locationData.enemyIds.filter(id => id !== enemyId)
+                })
+
+            })
+            await Promise.all(locationUpdateRequests);
+
             const response = await axios.delete(`${import.meta.env.VITE_SERVER_URL}/enemies/${enemyId}`)
             navigate('/journal')
-            getEnemyDetails();
 
         } catch (error) {
             console.log(error);
@@ -48,7 +58,6 @@ function EnemyDetails() {
             const enemyRes = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies/${enemyId}`)
             const enemyData = enemyRes.data
             const locationIdsInEnemy = enemyData.locationIds
-
             const locationsInEnemyReq = locationIdsInEnemy.map((locationId) => {
                 return (
                     axios.get(`${import.meta.env.VITE_SERVER_URL}/locations/${locationId}`)
@@ -86,7 +95,7 @@ function EnemyDetails() {
                 </div>
                 <div className="enemy-more-details flex-column">
                     <h3>Locations this enemy appears</h3>
-                    <div className="relation-location-item" key={location.id}>
+                    <div className="relation-location-item">
                         {
                             locations.map((location) => {
                                 return (

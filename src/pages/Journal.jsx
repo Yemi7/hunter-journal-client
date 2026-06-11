@@ -77,6 +77,7 @@ function Journal() {
             const response = await axios.delete(`${import.meta.env.VITE_SERVER_URL}/enemies/${seletedEnemyId}`)
             setSelectedEnemy(null);
             getEnemies();
+            setSelectedLocationId('')
         } catch (error) {
             console.log(error);
             navigate('/error')

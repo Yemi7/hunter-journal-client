@@ -72,7 +72,28 @@ function EditEnemy() {
         }
 
         try {
-            const response = await axios.put(`${import.meta.env.VITE_SERVER_URL}/enemies/${enemyId}`, body)
+            const oldEnemyRes = await axios.get(`${import.meta.env.VITE_SERVER_URL}/enemies/${enemyId}`);
+            const oldLocationIds = oldEnemyRes.data.locationIds;
+            await axios.put(`${import.meta.env.VITE_SERVER_URL}/enemies/${enemyId}`, body)
+
+            const removedLocationIds = oldLocationIds.filter(id => !locationIds.includes(id))
+            const removeRequests = removedLocationIds.map(async (locationId) => {
+                const locationRes = await axios.get(`${import.meta.env.VITE_SERVER_URL}/locations/${locationId}`)
+                return axios.patch(`${import.meta.env.VITE_SERVER_URL}/locations/${locationId}`, {
+                    enemyIds: locationRes.data.enemyIds.filter(id => id !== enemyId)
+                })
+            })
+
+            const addedLocationIds = locationIds.filter(id => !oldLocationIds.includes(id))
+            const addRequests = addedLocationIds.map(async (locationId) => {
+                const locationRes = await axios.get(`${import.meta.env.VITE_SERVER_URL}/locations/${locationId}`)
+                return axios.patch(`${import.meta.env.VITE_SERVER_URL}/locations/${locationId}`, {
+                    enemyIds: [...locationRes.data.enemyIds, enemyId]
+                })
+            })
+
+            await Promise.all([...removeRequests, ...addRequests])
+
             navigate(`/enemy-details/${enemyId}`);
         } catch (error) {
             console.log(error);

@@ -50,6 +50,19 @@ function CreateEnemy() {
 
         try {
             const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/enemies`, body)
+            const newEnemyId = response.data.id;
+
+            const locationUpdateRequests = locationIds.map(async (locationId) => {
+                const locationRes = await axios.get(`${import.meta.env.VITE_SERVER_URL}/locations/${locationId}`)
+                return axios.patch(`${import.meta.env.VITE_SERVER_URL}/locations/${locationId}`, {
+                    enemyIds: [...locationRes.data.enemyIds, newEnemyId]
+                })
+            })
+
+            await Promise.all(locationUpdateRequests)
+
+            navigate('/journal');
+
         } catch (error) {
             console.log(error);
             navigate('/error')
@@ -57,7 +70,7 @@ function CreateEnemy() {
 
         console.log(body)
 
-        navigate('/journal');
+
     }
 
     return (
