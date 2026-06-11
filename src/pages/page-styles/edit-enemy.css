@@ -22,7 +22,7 @@
   height: 200px;
 }
 .edit-enemy-picture img {
-  height: auto;
+  height: 100%;
 }
 
 .edit-enemy-name {
