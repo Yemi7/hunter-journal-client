@@ -9,6 +9,7 @@ import { ThemeContext } from "../context/theme.context";
 
 function Home() {
     const navigate = useNavigate();
+    // contains the theme consistent across the whole app
     const { theme } = useContext(ThemeContext)
 
     return (

@@ -13,9 +13,10 @@ import LoadingScreen from '../components/LoadingScreen';
 
 function Journal() {
     const navigate = useNavigate();
-
+    // the theme consistent across the app
     const { theme, setTheme } = useContext(ThemeContext);
 
+    // the states containing array of enemies, the array of selectable locations
     const [enemies, setEnemies] = useState([]);
     const [seletedEnemy, setSelectedEnemy] = useState(null);
     const [seletedEnemyId, setSelectedEnemyId] = useState(null);
@@ -45,6 +46,7 @@ function Journal() {
 
     useEffect(() => {
         if (!seletedEnemyId) return;
+        setShowDeleteConfirm(false);
         getSingleEnemy(seletedEnemyId);
     }, [seletedEnemyId])
 
@@ -78,6 +80,7 @@ function Journal() {
 
             const response = await axios.delete(`${import.meta.env.VITE_SERVER_URL}/enemies/${seletedEnemyId}`)
             setSelectedEnemy(null);
+            setShowDeleteConfirm(false);
             getEnemies();
             setSelectedLocationId('')
         } catch (error) {
@@ -131,7 +134,10 @@ function Journal() {
                     label="Choose a Location">
                     <Form.Select
                         value={selectedLocationId}
-                        onChange={(e) => { setSelectedLocationId(e.target.value) }}
+                        onChange={(e) => {
+                            setShowDeleteConfirm(false);
+                            setSelectedLocationId(e.target.value);
+                        }}
                     >
                         <option value="">All Locations</option>
                         {
@@ -183,7 +189,14 @@ function Journal() {
                     <button className='btn' onClick={() => { navigate(`/create-enemy`) }}>create enemy</button>
                 </div>
                 <div className='delete-button'>
-                    <button className='btn' disabled={!seletedEnemy} onClick={() => { deleteSingleEnemy() }} >delete</button>
+                    {
+                        showDeleteConfirm ?
+                            <div className='delete-confirm'>
+                                <button className='btn' onClick={() => { deleteSingleEnemy() }}>confirm</button>
+                                <button className='btn cancel-delete' onClick={() => { setShowDeleteConfirm(false) }}>cancel</button>
+                            </div> :
+                            <button className='btn' disabled={!seletedEnemy} onClick={() => { setShowDeleteConfirm(true) }} >delete</button>
+                    }
                 </div>
 
             </div>

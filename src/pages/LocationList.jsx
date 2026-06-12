@@ -8,7 +8,7 @@ import LoadingScreen from "../components/LoadingScreen";
 function LocationList() {
 
     const navigate = useNavigate()
-
+    
     const [locations, setLocations] = useState([])
     const [fetching, setFetching] = useState(true)
 

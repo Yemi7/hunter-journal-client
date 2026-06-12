@@ -13,10 +13,12 @@ function EnemyDetails() {
     const [enemy, setEnemy] = useState(null);
     const [fetching, setFetching] = useState(true)
     const [locations, setLocations] = useState([]);
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
 
 
     useEffect(() => {
+        setShowDeleteConfirm(false);
         getEnemyDetails();
         getLocationsForEnemy();
     }, [enemyId])
@@ -120,7 +122,14 @@ function EnemyDetails() {
                     <button className="btn" onClick={() => { navigate(`/edit-enemy/${enemyId}`) }}>Edit</button>
                 </div>
                 <div className="delete-enemy-button flex">
-                    <button className="btn" onClick={() => { deleteEnemy() }}>Delete</button>
+                    {
+                        showDeleteConfirm ?
+                            <div className="delete-confirm">
+                                <button className="btn" onClick={() => { deleteEnemy() }}>Confirm</button>
+                                <button className="btn cancel-delete" onClick={() => { setShowDeleteConfirm(false) }}>Cancel</button>
+                            </div> :
+                            <button className="btn" onClick={() => { setShowDeleteConfirm(true) }}>Delete</button>
+                    }
                 </div>
                 <div className="back-button flex">
                     <button className="btn" onClick={() => { navigate('/journal') }}>Back</button>
