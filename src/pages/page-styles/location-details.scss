@@ -94,7 +94,7 @@
 }
 
 .relation-enemy-item {
-  flex: 1, 1, 500px;
+  flex: 1 1 500px;
   overflow: scroll;
 
   .enemy-link {
@@ -131,8 +131,8 @@
     }
     p:active {
       .dark & {
+        color: rgb(36, 10, 96);
       }
-      color: rgb(36, 10, 96);
 
       .light & {
         color: rgb(222, 161, 8);
