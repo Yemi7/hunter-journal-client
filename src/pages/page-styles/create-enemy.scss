@@ -1,0 +1,56 @@
+/* create enemy page */
+
+.create-enemy-page {
+  width: 1000px;
+  margin: 0 auto;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* add media for smaller screens */
+  @media only screen and (max-width: 1000px) {
+    width: 768px;
+  }
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.create-enemy-page {
+  .dark & {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px rgb(137, 127, 200) solid;
+  }
+  .light & {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px rgb(222, 161, 8) solid;
+  }
+}
+
+.react-button.submit-button {
+  .dark & {
+    background-color: rgb(26, 10, 96);
+    border: none;
+    &:hover {
+      background-color: rgba(26, 10, 96, 0);
+      border: 3px solid rgb(26, 10, 96);
+    }
+    &:active {
+      background-color: rgb(74, 7, 137) !important;
+      border: 3px solid rgb(74, 7, 137) !important;
+    }
+  }
+  .light & {
+    background-color: rgb(222, 161, 8);
+    border: none;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0);
+      border: 3px solid rgb(222, 161, 8);
+    }
+    &:active {
+      background-color: rgb(244, 209, 9) !important;
+      border: 3px solid rgb(244, 209, 9) !important;
+    }
+  }
+}

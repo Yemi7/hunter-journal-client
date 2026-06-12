@@ -1,0 +1,187 @@
+/* location details page */
+.location-details-page {
+  width: 992px;
+  margin: 56px auto 0;
+  min-height: calc(100vh - 56px);
+
+  display: flex;
+  flex-direction: column;
+  @media only screen and (max-width: 996px) {
+    width: 768px;
+  }
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.location-details-page {
+  .dark & {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px rgb(137, 127, 200) solid;
+  }
+  .light & {
+    background-color: rgba(175, 175, 175, 0.8);
+    border: 1px rgb(222, 161, 8) solid;
+  }
+}
+
+.carousel {
+  color: red;
+  width: 95%;
+  margin: 35px auto 50px;
+  @media only screen and (max-width: 996px) {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.location-details-grid {
+  display: grid;
+  grid-template: 50px repeat(5, 1fr) / repeat(2, 1fr);
+  height: 600px;
+}
+.location-details-description {
+  grid-area: 1/1/6/2;
+  justify-content: start;
+  border-top: solid transparent 3px;
+  .dark & {
+    border-image: linear-gradient(to right, transparent, white) 1;
+  }
+  .light & {
+    border-image: linear-gradient(to right, transparent, black) 1;
+  }
+  overflow: scroll;
+  h3 {
+    margin: 20px 0;
+    font-size: 1.8em;
+  }
+  p {
+    margin-bottom: 50px;
+    font-size: 1.4em;
+    padding: 0 20px;
+  }
+}
+.location-more-details {
+  .dark & {
+    border-top: 3px solid white;
+    border-left: 3px solid transparent;
+    border-image: linear-gradient(
+        to left bottom,
+        transparent,
+        white,
+        transparent
+      )
+      1;
+  }
+  .light & {
+    border-top: 3px solid black;
+    border-left: 3px solid transparent;
+    border-image: linear-gradient(
+        to left bottom,
+        transparent,
+        black,
+        transparent
+      )
+      1;
+  }
+
+  grid-area: 1/2/6/3;
+  justify-content: start;
+  h3 {
+    margin: 20px 0;
+    font-size: 1.8em;
+  }
+}
+
+.relation-enemy-item {
+  flex: 1, 1, 500px;
+  overflow: scroll;
+
+  .enemy-link {
+    .dark & {
+      text-decoration-color: rgb(202, 202, 202);
+    }
+
+    .light & {
+      text-decoration-color: rgb(0, 0, 0);
+    }
+
+    text-underline-offset: 0.3em;
+    p {
+      border-radius: 3px;
+      padding: 5px;
+      font-size: 1em;
+      .dark & {
+        color: rgb(202, 202, 202);
+      }
+      .light & {
+        color: rgb(0, 0, 0);
+      }
+    }
+
+    p:hover {
+      .dark & {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .light & {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+      transition: 0.3s;
+    }
+    p:active {
+      .dark & {
+      }
+      color: rgb(36, 10, 96);
+
+      .light & {
+        color: rgb(222, 161, 8);
+      }
+      transition: none;
+    }
+  }
+}
+
+.location-back-button {
+  grid-area: 6/1/7/3;
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(to right, transparent, white, transparent) 1;
+}
+
+.location-back-button .btn {
+  .dark & {
+    color: rgb(202, 202, 202);
+    background-color: rgb(36, 10, 96);
+  }
+
+  .light & {
+    color: rgb(0, 0, 0);
+    background-color: rgb(222, 161, 8);
+  }
+  border: none;
+  padding: 10px;
+  width: 120px;
+}
+
+.location-back-button .btn:hover {
+  .dark & {
+    background-color: rgba(36, 10, 96, 0);
+    border: 2px solid rgb(36, 10, 96);
+  }
+
+  .light & {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid rgb(222, 161, 8);
+  }
+}
+
+.location-back-button .btn:active {
+  .dark & {
+    background-color: rgb(79, 20, 217);
+    border: 2px solid rgb(79, 20, 217);
+  }
+  .light & {
+    background-color: rgb(246, 222, 9);
+    border: 2px solid rgb(246, 222, 9);
+  }
+}

@@ -15,9 +15,16 @@
     overflow: hidden;
   }
 }
-.dark .error-page {
-  background-color: rgba(0, 0, 0, 0.8);
-  border: 1px rgb(137, 127, 200) solid;
+.error-page {
+  .dark & {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px rgb(137, 127, 200) solid;
+  }
+  .light & {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px rgb(222, 161, 8) solid;
+  }
+
   @media only screen and (max-width: 360px) {
     overflow: hidden;
   }

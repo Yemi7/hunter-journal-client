@@ -1,7 +1,7 @@
 import axios from "axios";
 import { use, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import './page-styles/locations.css'
+import './page-styles/locations.scss'
 import LoadingScreen from "../components/LoadingScreen";
 
 

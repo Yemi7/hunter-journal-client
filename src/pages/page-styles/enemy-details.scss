@@ -1,0 +1,266 @@
+/* enemy details page */
+
+.enemy-details {
+  min-height: calc(100vh - 56px);
+  width: 992px;
+  margin: 56px auto 0;
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (max-width: 992px) {
+    width: 100%;
+  }
+}
+
+.enemy-details {
+  .dark & {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px rgb(137, 127, 200) solid;
+  }
+  .light & {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px rgb(222, 161, 8) solid;
+  }
+}
+
+.enemy-details-name {
+  margin-top: 20px;
+  h1 {
+    font-size: 4em;
+  }
+}
+
+.enemy-details-picture {
+  margin: 50px auto;
+  width: 100%;
+  .dark & {
+    border-top: 3px solid transparent;
+    border-image: linear-gradient(to right, transparent, white, transparent) 1;
+  }
+  .light & {
+    border-top: 3px solid transparent;
+    border-image: linear-gradient(to right, transparent, black, transparent) 1;
+  }
+}
+
+.enemy-details-picture img {
+  margin-top: 20px;
+  height: 150px;
+  width: auto;
+}
+
+.enemy-details-grid {
+  height: 100%;
+  display: grid;
+  width: 100%;
+  grid-template: repeat(6, 1fr) / repeat(2, 1fr);
+  flex: 1 1 auto;
+}
+
+.enemy-details-description {
+  padding: 10px 0;
+  justify-content: space-between;
+  grid-area: 1/1/5/2;
+  border-top: 3px solid transparent;
+  border-right: 3px solid transparent;
+  .dark & {
+    border-image: linear-gradient(
+        to bottom right,
+        transparent,
+        white,
+        transparent
+      )
+      1;
+  }
+  .light & {
+    border-image: linear-gradient(
+        to bottom right,
+        transparent,
+        black,
+        transparent
+      )
+      1;
+  }
+  p {
+    width: 80%;
+    text-align: start;
+    font-size: 1.2em;
+  }
+}
+
+.enemy-more-details {
+  padding: 10px 0;
+  grid-area: 1/2/5/3;
+  max-height: 100%;
+  justify-content: space-between;
+  .dark & {
+    border-top: 3px solid white;
+    border-image: linear-gradient(to right, white, transparent) 1;
+  }
+
+  .light & {
+    border-top: 3px solid black;
+    border-image: linear-gradient(to right, black, transparent) 1;
+  }
+  h3 {
+    flex-wrap: nowrap;
+    font-size: 2em;
+  }
+}
+
+.relation-location-item {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 250px;
+  .dark & {
+    color: rgb(202, 202, 202);
+  }
+  .light & {
+    color: rgb(0, 0, 0);
+  }
+  overflow-y: scroll;
+  .location-link {
+    .dark & {
+      text-decoration-color: rgb(202, 202, 202);
+    }
+    .light & {
+      text-decoration-color: rgb(0, 0, 0);
+    }
+
+    text-underline-offset: 0.3em;
+    p {
+      .dark & {
+        color: rgb(202, 202, 202);
+      }
+      .light & {
+        color: rgb(0, 0, 0);
+      }
+
+      border-radius: 3px;
+      padding: 5px;
+    }
+    p:hover {
+      .dark &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+      .light &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+
+      transition: 0.3s;
+    }
+    p:active {
+      .dark & {
+        color: rgb(36, 10, 96);
+      }
+      .light & {
+        color: rgb(222, 161, 8);
+      }
+      transition: none;
+    }
+  }
+}
+
+.edit-enemy-button {
+  grid-area: 5/1/6/2;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid transparent;
+  .dark & {
+    border-image: linear-gradient(to right, transparent, white) 1;
+  }
+  .light & {
+    border-image: linear-gradient(to right, transparent, black) 1;
+  }
+}
+
+.delete-enemy-button {
+  grid-area: 5/2/6/3;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid transparent;
+  .dark & {
+    border-image: linear-gradient(to right, white, transparent) 1;
+  }
+  .light & {
+    border-image: linear-gradient(to right, black, transparent) 1;
+  }
+}
+
+.back-button {
+  grid-area: 6/1/7/3;
+}
+
+.edit-enemy-button .btn,
+.back-button .btn {
+  border: none;
+  padding: 10px;
+  width: 120px;
+  .dark & {
+    color: rgb(202, 202, 202);
+    background-color: rgb(36, 10, 96);
+  }
+  .light & {
+    color: rgb(75, 75, 75);
+    background-color: rgb(222, 161, 8);
+  }
+}
+
+.edit-enemy-button .btn:hover,
+.back-button :hover {
+  .dark & {
+    background-color: rgba(36, 10, 96, 0);
+    border: 2px solid rgb(36, 10, 96);
+  }
+  .light & {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid rgb(222, 161, 8);
+  }
+}
+
+.edit-enemy-button .btn:active,
+.back-button :active {
+  .dark & {
+    background-color: rgb(72, 17, 201);
+    border: 2px solid rgb(72, 17, 201);
+  }
+  .light & {
+    background-color: rgb(247, 202, 6);
+    border: 2px solid rgb(247, 202, 6);
+  }
+}
+
+.dark .back-button .btn:disabled {
+  background-color: rgb(36, 10, 96);
+}
+
+.delete-enemy-button .btn {
+  background-color: rgb(227, 6, 6);
+  border: none;
+  padding: 10px;
+  width: 120px;
+  color: rgb(202, 202, 202);
+}
+
+.delete-enemy-button .btn:hover {
+  background-color: rgba(36, 10, 96, 0);
+  border: 2px solid rgb(224, 10, 10);
+}
+
+.delete-enemy-button .btn:active {
+  color: red;
+}
+
+.delete-enemy-button .btn:disabled {
+  background-color: rgb(227, 6, 6);
+}
+
+.no-enemies-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-enemies {
+  width: 80%;
+}

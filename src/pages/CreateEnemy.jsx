@@ -1,13 +1,16 @@
 
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
-import './page-styles/create-enemy.css'
+import './page-styles/create-enemy.scss'
 import LoadingScreen from '../components/LoadingScreen';
+import { ThemeContext } from '../context/theme.context';
 
 function CreateEnemy() {
+
+    const { theme } = useContext(ThemeContext)
 
     const [locations, setLocations] = useState([]); //for option select
 
@@ -83,7 +86,7 @@ function CreateEnemy() {
 
 
         <div className="create-enemy-page">
-            <Form onSubmit={handleSubmit} className='edit-enemy-form'> {/* placeholders should be current values */}
+            <Form data-bs-theme={theme} onSubmit={handleSubmit} className='edit-enemy-form'> {/* placeholders should be current values */}
                 <Form.Group className='mb-5'>
                     <Form.Label className='d-block'>Select the enemy's location</Form.Label>
                     {locations.map((location) => {

@@ -1,4 +1,4 @@
-import './page-styles/error.css'
+import './page-styles/error.scss'
 import ErrorImg from '../resources/images/error2.webp'
 
 function ErrorPage() {

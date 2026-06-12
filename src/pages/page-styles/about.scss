@@ -1,0 +1,101 @@
+.about {
+  width: 1000px;
+  margin: 0 auto;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  /* add media for smaller screens */
+  @media only screen and (max-width: 1000px) {
+    width: 100%;
+  }
+  @media only screen and (max-width: 360px) {
+    overflow: hidden;
+  }
+}
+.about {
+  .dark & {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px rgb(137, 127, 200) solid;
+  }
+  .light & {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px rgb(222, 161, 8) solid;
+  }
+  @media only screen and (max-width: 360px) {
+    overflow: hidden;
+  }
+}
+
+.image-box {
+  width: 100%;
+  justify-self: start;
+}
+
+.about-details {
+  margin: 0 auto;
+  width: 500px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    font-size: 1.8em;
+  }
+  p {
+    font-size: 0.9em;
+  }
+}
+
+.light-git-png {
+  width: 100px;
+  height: auto;
+}
+
+.art-link {
+  .dark & {
+    color: rgb(110, 0, 235);
+  }
+  .light & {
+    color: rgb(222, 161, 8);
+  }
+}
+
+.about .btn {
+  .dark & {
+    color: rgb(202, 202, 202);
+    background-color: rgb(36, 10, 96);
+  }
+  .light & {
+    color: rgb(0, 0, 0);
+    background-color: rgb(222, 161, 8);
+  }
+  border: none;
+  padding: 10px;
+  width: 120px;
+}
+
+.about .btn:hover {
+  .dark & {
+    background-color: rgba(36, 10, 96, 0);
+    border: 2px solid rgb(36, 10, 96);
+  }
+  .light & {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid rgb(222, 161, 8);
+  }
+}
+
+.about .btn:active {
+  .dark & {
+    background-color: rgb(76, 19, 208);
+    border: 2px solid rgb(202, 202, 202);
+    color: rgb(202, 202, 202);
+  }
+  .light & {
+    background-color: rgb(255, 214, 8);
+    border: 2px solid rgb(0, 0, 0);
+    color: black;
+  }
+}

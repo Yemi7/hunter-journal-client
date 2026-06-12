@@ -2,9 +2,8 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import AboutImg from '../resources/images/about2.png'
-import './page-styles/about.css'
+import './page-styles/about.scss'
 import { ThemeContext } from "../context/theme.context";
-import { Placeholder } from "react-bootstrap";
 import WhiteGithubPng from "../resources/images/whitegithub.png"
 
 function About() {
@@ -37,7 +36,7 @@ function About() {
                             <Link to='https://github.com/Yemi7/hunter-journal-client'>
                                 <img className="light-git-png" src={WhiteGithubPng} />
                             </Link> :
-                            Placeholder
+                            <p>placeholder</p>
                     }
                     <p>Github</p>
                     <Link className="art-link" to='https://www.reddit.com/r/HollowKnightArt/comments/18b8xx8/i_badly_drew_every_named_hollow_knight_character/'>

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import './page-styles/enemy-details.css'
+import './page-styles/enemy-details.scss'
 import LoadingScreen from "../components/LoadingScreen";
 
 

@@ -1,12 +1,15 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate, useParams } from 'react-router-dom';
-import './page-styles/edit-enemy.css'
+import './page-styles/edit-enemy.scss'
 import LoadingScreen from '../components/LoadingScreen';
+import { ThemeContext } from '../context/theme.context';
 
 function EditEnemy() {
+    const { theme } = useContext(ThemeContext);
+
     const navigate = useNavigate()
 
     const { enemyId } = useParams();
@@ -115,7 +118,7 @@ function EditEnemy() {
                     <h1>{name}</h1>
                 </div>
             </div>
-            <Form onSubmit={handleSubmit} className='edit-enemy-form'> {/* placeholders should be current values */}
+            <Form data-bs-theme={theme} onSubmit={handleSubmit} className='edit-enemy-form'> {/* placeholders should be current values */}
                 <Form.Group className='mb-5'>
                     <Form.Label className='d-block'>Select the enemy's location</Form.Label>
                     {locations.map((location) => {
