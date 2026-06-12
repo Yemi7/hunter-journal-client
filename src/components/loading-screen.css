@@ -1,0 +1,22 @@
+.loading-screen {
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* add media for smaller screens */
+}
+.dark .loading-screen {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px rgb(137, 127, 200) solid;
+  @media only screen and (max-width: 360px) {
+    overflow: hidden;
+  }
+}
+
+.loading-screen .spinner {
+  height: 200px;
+  width: 200px;
+}

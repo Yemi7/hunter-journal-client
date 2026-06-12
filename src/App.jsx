@@ -21,8 +21,8 @@ function App() {
 
   return (
     <div className={theme}>
-      <MyNavbar theme={theme} setTheme={setTheme} />
-      <div className='dark mx-auto my-0'>
+      <MyNavbar />
+      <div className=' mx-auto my-0'>
         <Routes>
           <Route path={"/"} element={<Home />} />
           <Route path={"/about"} element={<About />} />

@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate, useParams } from 'react-router-dom';
 import './page-styles/edit-enemy.css'
+import LoadingScreen from '../components/LoadingScreen';
 
 function EditEnemy() {
     const navigate = useNavigate()
@@ -102,7 +103,7 @@ function EditEnemy() {
 
     }
 
-    if (fetching) return <h1 className='mt-5 p-5'>Loading</h1>
+    if (fetching) return <LoadingScreen />
 
     return (
         <div className="edit-enemy-page">

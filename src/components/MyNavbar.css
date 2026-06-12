@@ -32,3 +32,12 @@
     color: rgb(36, 10, 96);
   }
 }
+
+.dark .react-nav-button.theme-button {
+  background-color: rgb(26, 10, 96);
+  border: none;
+}
+.light .react-nav-button.theme-button {
+  background-color: rgb(222, 161, 8);
+  border: none;
+}

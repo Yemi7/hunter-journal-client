@@ -2,6 +2,7 @@ import axios from "axios";
 import { use, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import './page-styles/locations.css'
+import LoadingScreen from "../components/LoadingScreen";
 
 
 function LocationList() {
@@ -27,7 +28,7 @@ function LocationList() {
         }
     }
 
-    if (fetching) return <h1 className="mt-5 p-5">Loading</h1>
+    if (fetching) return <LoadingScreen />
 
     return (
 

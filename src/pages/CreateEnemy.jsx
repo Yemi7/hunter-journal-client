@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useNavigate } from 'react-router-dom';
 import './page-styles/create-enemy.css'
+import LoadingScreen from '../components/LoadingScreen';
 
 function CreateEnemy() {
 
@@ -16,7 +17,8 @@ function CreateEnemy() {
     const [behaviour, setBehaviour] = useState('');
     const [health, setHealth] = useState(0);
     const [geo, setGeo] = useState(0);
-    const [locationIds, setLocationIds] = useState([])
+    const [locationIds, setLocationIds] = useState([]);
+    const [fetching, setFetching] = useState(true)
 
     useEffect(() => {
         getLocations();
@@ -25,6 +27,7 @@ function CreateEnemy() {
         try {
             const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/locations`)
             setLocations(response.data)
+            setFetching(false);
 
         } catch (error) {
             console.log(error);
@@ -72,6 +75,8 @@ function CreateEnemy() {
 
 
     }
+
+    if (fetching) return <LoadingScreen />
 
     return (
 

@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import './page-styles/location-details.css'
+import LoadingScreen from '../components/LoadingScreen';
 function LocationDetails() {
     const navigate = useNavigate();
 
@@ -50,7 +51,7 @@ function LocationDetails() {
         }
     }
 
-    if (fetching) return <h1 className='mt-5 p-5'>Loading...</h1>;
+    if (fetching) return <LoadingScreen />
 
     return (
         <div className="location-details-page">

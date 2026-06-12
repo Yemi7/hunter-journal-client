@@ -9,11 +9,14 @@ import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom'
 import '../index.css'
 import './MyNavbar.css'
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { ThemeContext } from '../context/theme.context';
 
 
-function MyNavbar({ theme, setTheme }) {
+function MyNavbar() {
+
+    const { theme, handleToggleTheme } = useContext(ThemeContext)
 
     const [search, setSearch] = useState('');
     const [foundArray, setFoundArray] = useState([]);
@@ -46,6 +49,7 @@ function MyNavbar({ theme, setTheme }) {
                 <Nav>
                     <Nav.Link as={Link} to='/'>Home</Nav.Link>
                     <Nav.Link as={Link} to='/about'>About</Nav.Link>
+                    <Button onClick={handleToggleTheme} className='react-nav-button theme-button' >Theme</Button>
                 </Nav>
                 <Form className='search'>
                     <Row className='m-0 g-0 justify-content-start'>

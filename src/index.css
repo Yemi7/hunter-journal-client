@@ -31,6 +31,15 @@ body {
   background-position: center;
   background-attachment: fixed;
 }
+.light {
+  background-color: rgb(15, 16, 28);
+  color: rgb(31, 31, 31);
+  background-image: url('./resources/images/light-background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 
 .flex {
   display: flex;

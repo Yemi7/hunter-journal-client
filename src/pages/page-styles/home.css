@@ -13,23 +13,29 @@
   @media only screen and (max-width: 360px) {
     overflow: hidden;
   }
-
 }
 .dark .home {
   background-color: rgba(0, 0, 0, 0.8);
   border: 1px rgb(137, 127, 200) solid;
-
 }
 
-.journal-details {
+.light .home {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px rgb(231, 177, 27) solid;
+}
+
+.dark .journal-details {
   background-color: rgb(12, 13, 20);
+}
+.light .journal-details {
+  background-color: rgb(196, 196, 196);
 }
 
 .cover {
   margin-top: 70px;
 }
 
-.button-container .button {
+.dark .button-container .button {
   background-color: rgb(26, 10, 96);
   border: none;
   &:hover {
@@ -39,5 +45,17 @@
   &:active {
     background-color: rgb(74, 7, 137) !important;
     border: 3px solid rgb(74, 7, 137) !important;
+  }
+}
+.light .button-container .button {
+  background-color: rgb(222, 161, 8);
+  border: none;
+  &:hover {
+    background-color: rgba(222, 161, 8, 0);
+    border: 3px solid rgb(222, 161, 8);
+  }
+  &:active {
+    background-color: rgb(222, 161, 8) !important;
+    border: 3px solid rgb(222, 161, 8) !important;
   }
 }

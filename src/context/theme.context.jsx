@@ -5,9 +5,14 @@ const ThemeContext = createContext();
 function ThemeWrapper(props) {
     const [theme, setTheme] = useState("dark");
 
+    const handleToggleTheme = () => {
+        setTheme(theme === "dark" ? "light" : "dark")
+    }
+
     const passedContext = {
         theme,
         setTheme,
+        handleToggleTheme,
     }
 
     return (

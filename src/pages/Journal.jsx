@@ -6,7 +6,9 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../context/theme.context';
-import './page-styles/journal.css'
+import './page-styles/journal.scss'
+import LoadingScreen from '../components/LoadingScreen';
+
 
 
 function Journal() {
@@ -119,7 +121,7 @@ function Journal() {
         }
     }
 
-    if (!enemies || fetching) return <h1 className='mt-5 p-5'>Loading...</h1>
+    if (!enemies || fetching) return <LoadingScreen />
 
     return (
         <div className="journal">

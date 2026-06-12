@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import './page-styles/enemy-details.css'
+import LoadingScreen from "../components/LoadingScreen";
 
 
 function EnemyDetails() {
@@ -76,7 +77,7 @@ function EnemyDetails() {
 
 
 
-    if (!enemy || fetching) return <h1 className="mt-5 p-5">Loading</h1>
+    if (!enemy || fetching) return <LoadingScreen />
 
     return (
         <div className="enemy-details">
