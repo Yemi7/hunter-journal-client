@@ -161,6 +161,7 @@ function CreateEnemy() {
                     />
                 </Form.Group>
                 <Button
+                    className='react-button submit-button'
                     variant="primary"
                     type="submit" >
                     Submit

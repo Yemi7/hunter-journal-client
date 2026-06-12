@@ -15,7 +15,7 @@ function Home() {
             </div>
             <div className="journal-details mt-5 p-5 rounded">
                 <p className="lh-3">
-                    The hunter Journal is an item in Hollow Knight, given to you by a character named "The Hunter." It tracks
+                    The Hunter Journal is an item in Hollow Knight, given to you by a character named "The Hunter." It tracks
                     the details of all the enemies you have defeated, and when you defeat more it gives you more details on said
                     enemy.
                 </p>
