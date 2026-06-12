@@ -14,10 +14,11 @@
 
 .dark .enemy-details {
   background-color: rgba(0, 0, 0, 0.8);
+  border: 1px rgb(137, 127, 200) solid;
 }
 
 .enemy-details-name {
-  margin-top: 50px;
+  margin-top: 20px;
   h1 {
     font-size: 4em;
   }
@@ -32,6 +33,7 @@
 }
 
 .enemy-details-picture img {
+  margin-top: 20px;
   height: 150px;
   width: auto;
 }
@@ -41,6 +43,7 @@
   display: grid;
   width: 100%;
   grid-template: repeat(6, 1fr) / repeat(2, 1fr);
+  flex: 1, 1, 500px;
 }
 
 .enemy-details-description {

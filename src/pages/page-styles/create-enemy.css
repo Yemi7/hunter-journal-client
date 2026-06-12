@@ -4,7 +4,7 @@
   width: 1000px;
   margin: 0 auto;
   min-height: 100vh;
-  border: 1px fuchsia solid;
+
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -19,6 +19,7 @@
 
 .dark .create-enemy-page {
   background-color: rgba(0, 0, 0, 0.8);
+  border: 1px rgb(137, 127, 200) solid;
 }
 .react-button.submit-button {
   background-color: rgb(26, 10, 96);

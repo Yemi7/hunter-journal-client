@@ -3,7 +3,6 @@
   width: 1000px;
   margin: 0 auto;
   min-height: 100vh;
-  border: 1px fuchsia solid;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -14,12 +13,12 @@
   @media only screen and (max-width: 360px) {
     overflow: hidden;
   }
+
 }
 .dark .home {
   background-color: rgba(0, 0, 0, 0.8);
-  @media only screen and (max-width: 360px) {
-    overflow: hidden;
-  }
+  border: 1px rgb(137, 127, 200) solid;
+
 }
 
 .journal-details {

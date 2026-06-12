@@ -3,19 +3,20 @@
   width: 992px;
   margin: 56px auto 0;
   min-height: calc(100vh - 56px);
-  border: 1px fuchsia solid;
+
   display: flex;
   flex-direction: column;
   @media only screen and (max-width: 996px) {
     width: 768px;
   }
-    @media only screen and (max-width: 768px) {
-      width: 100%;
+  @media only screen and (max-width: 768px) {
+    width: 100%;
   }
 }
 
 .dark .location-details-page {
   background-color: rgba(0, 0, 0, 0.8);
+  border: 1px rgb(137, 127, 200) solid;
 }
 
 .carousel {

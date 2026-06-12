@@ -24,6 +24,7 @@
 
 .dark .journal {
   background-color: rgba(0, 0, 0, 0.8);
+  border: 1px rgb(137, 127, 200) solid;
 }
 
 .enemy-grid {
